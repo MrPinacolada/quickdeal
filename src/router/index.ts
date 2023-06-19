@@ -17,7 +17,7 @@ const router = createRouter({
     },
     {
       path: '/quickdeal/tasks',
-      name: 'tasks',
+      name: 'dif',
       component: TasksScreen
     },
   ]
