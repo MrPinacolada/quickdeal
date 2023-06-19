@@ -14,7 +14,12 @@ const router = createRouter({
       path: '/tasks',
       name: 'tasks',
       component: TasksScreen
-    }
+    },
+    {
+      path: '/quickdeal/tasks',
+      name: 'tasks',
+      component: TasksScreen
+    },
   ]
 })
 
