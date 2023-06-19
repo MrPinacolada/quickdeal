@@ -1,4 +1,4 @@
-import { createRouter,createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import MajorScreen from '@/views/MajorScreen.vue'
 import TasksScreen from '@/views/TasksScreen.vue'
 
@@ -14,7 +14,7 @@ const router = createRouter({
       path: '/tasks',
       name: 'tasks',
       component: TasksScreen
-    },
+    }
   ]
 })
 

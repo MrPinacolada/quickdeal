@@ -188,10 +188,11 @@ img:hover {
   border: none;
   background-color: transparent;
   color: white;
-  font-size: 1.5em;
+  font-size: 1em;
   outline: none;
   width: 100%;
   resize: vertical;
   min-height: fit-content;
+  text-align: center;
 }
 </style>
