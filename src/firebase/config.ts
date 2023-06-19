@@ -11,4 +11,4 @@ const firebaseConfig = {
 }
 const app = initializeApp(firebaseConfig)
 const quickdealFIRESTORE = getFirestore(app)
-export { quickdealFIRESTORE }
+export default quickdealFIRESTORE
