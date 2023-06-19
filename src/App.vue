@@ -7,12 +7,32 @@
     </div>
   </header>
   <main>
-    <RouterView />
+    <RouterView class="animate__animated animate__backInDown" />
   </main>
 </template>
 
 <script setup lang="ts">
+import { collection, getDocs } from 'firebase/firestore'
+import 'animate.css'
+import { onMounted, onBeforeMount } from 'vue'
+import quickdealFIRESTORE from '@/firebase/config'
+import { Store } from '@/stores/store'
 const title = 'Tasks sheet'.toLocaleUpperCase()
+let store = Store()
+let loadNotes = async () => {
+  let querySnapshot = await getDocs(collection(quickdealFIRESTORE, 'Notes'))
+  querySnapshot.forEach((doc) => {
+    store.$state.firebaseArr.push(doc.data().note)
+  })
+}
+onBeforeMount(() => {
+  if (!store.$state.firebaseArr) {
+    store.$state.firebaseArr = []
+  }
+})
+onMounted(() => {
+  loadNotes()
+})
 </script>
 
 <style>
@@ -48,6 +68,7 @@ header {
   align-content: center;
   justify-content: center;
   top: 0;
+  z-index: 9999;
 }
 
 .header-container {

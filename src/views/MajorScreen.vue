@@ -10,38 +10,25 @@
         autoplay
       ></lottie-player>
     </RouterLink>
-     <div class="tsBoxes" v-for="item in test">
-      <p>{{ item.b1 }}</p>
-      <p>{{ item.b2 }}</p>
+    <h2>To do:{{ todoCount }}</h2>
+    <div class="tsBoxes" v-for="item in notesArr">
+      <p>{{ item }}</p>
+      <img src="../assets//tasksBar/task.png" alt="" />
     </div>
-  </section> 
+  </section>
 </template>
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { Store } from '@/stores/store'
+import { onMounted, computed } from 'vue'
 import { ref } from 'vue'
-let test = ref([
-  {
-    b1: 'asdadasd',
-    b2: 'dadads'
-  },
-  {
-    b1: 'asdadasd',
-    b2: 'dadads'
-  },
-  {
-    b1: 'asdadasd',
-    b2: 'dadads'
-  },
-  {
-    b1: 'asdadasd',
-    b2: 'dadads'
-  },
-  {
-    b1: 'asdadasd',
-    b2: 'dadads'
-  }
-])
+let store = Store()
+let notesArr = ref()
+let todoCount = computed(() => store.$state.firebaseArr.length)
+onMounted(() => {
+  notesArr.value = store.$state.firebaseArr
+})
 </script>
 
 <style scoped>
@@ -60,8 +47,7 @@ let test = ref([
   position: relative;
 }
 .tsBoxes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   padding: 10px;
   width: 100%;
   height: fit-content;
@@ -69,6 +55,9 @@ let test = ref([
   border-radius: 15px;
   font-size: 1.5em;
   color: white;
+  align-items: center;
+  cursor: context-menu;
+  justify-content: space-between;
 }
 lottie-player {
   left: 110%;
@@ -76,5 +65,10 @@ lottie-player {
   position: absolute;
   top: 45%;
   cursor: pointer;
+}
+img {
+  max-width: 40px;
+  max-height: 40px;
+  cursor: context-menu;
 }
 </style>
